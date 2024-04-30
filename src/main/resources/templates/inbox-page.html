@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>VolcanoMail</title>
+    <title>CódigoSecreto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -63,15 +63,15 @@
 <div class="container">
     <header>
         <h3>
-            VolcanoMail
-            <small class="text-muted">Welcome, </small>
+            CódigoSecreto
+            <small class="text-muted">Bienvenido, </small>
             <small class="text-muted" th:text="${userName}">UserName</small>
         </h3>
     </header>
 
     <nav>
         <div class="card mb-3">
-            <a href="/compose" class="btn btn-primary pt-3 pb-3">Compose message</a>
+            <a href="/compose" class="btn btn-primary pt-3 pb-3">Redactar Mensaje</a>
         </div>
         <div th:insert="components/folder-list :: folder-list (panelName = 'Folders', folders = ${userFolders}, selectedFolder = ${folderName}, folderToUnreadCounts = ${folderToUnreadCounts})"></div>
     </nav>
@@ -81,7 +81,6 @@
             <div class="card-header" th:text="${folderName}"></div>
             <div class="card-body">
                 <div class="list-group">
-<!--                    th:href="@{'/email/' + ${email.id.timeId}} + '?folder=' + ${currentFolder}" +   href="#"-->
                     <a th:href="@{'/emails/' + ${emailDto.email.key.timeUUID}} + '?folder=' + ${folderName}"
                             class="list-group-item list-group-item-action" th:classappend="${emailDto.email.unread} ? bold : regular" aria-current="true" th:each="emailDto : ${folderEmails}">
                         <div class="d-flex w-100 justify-content-between">
@@ -96,7 +95,7 @@
     </main>
 
     <footer>
-        <!-- Footer content -->
+
     </footer>
 </div>
 </body>

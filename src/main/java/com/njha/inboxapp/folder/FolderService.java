@@ -19,10 +19,10 @@ public class FolderService {
     private UnreadEmailStatsRepository unreadEmailStatsRepository;
 
     public void createStandardFoldersForNewUser(String userId) {
-        folderRepository.save(Folder.builder().userId(userId).label("Inbox").timeUUID(Uuids.timeBased()).color("Blue").build());
-        folderRepository.save(Folder.builder().userId(userId).label("Sent").timeUUID(Uuids.timeBased()).color("Green").build());
-        folderRepository.save(Folder.builder().userId(userId).label("Important").timeUUID(Uuids.timeBased()).color("Red").build());
-        folderRepository.save(Folder.builder().userId(userId).label("Starred").timeUUID(Uuids.timeBased()).color("Yellow").build());
+        folderRepository.save(Folder.builder().userId(userId).label("Recibidos").timeUUID(Uuids.timeBased()).color("Blue").build());
+        folderRepository.save(Folder.builder().userId(userId).label("Enviar").timeUUID(Uuids.timeBased()).color("Green").build());
+        folderRepository.save(Folder.builder().userId(userId).label("Importante").timeUUID(Uuids.timeBased()).color("Red").build());
+        folderRepository.save(Folder.builder().userId(userId).label("Favoritos").timeUUID(Uuids.timeBased()).color("Yellow").build());
     }
 
     public List<Folder> findAllByUserId(String userId) {
@@ -35,10 +35,10 @@ public class FolderService {
         // Show default folder to users if for whatever reasons user folders were not created on signup, or if we are unable to access it
         if (userFolders == null || userFolders.size() == 0) {
             userFolders = Arrays.asList(
-                    Folder.builder().userId(userId).label("Inbox").color("Blue").build(),
-                    Folder.builder().userId(userId).label("Sent").color("Green").build(),
-                    Folder.builder().userId(userId).label("Important").color("Red").build(),
-                    Folder.builder().userId(userId).label("Starred").color("Yellow").build()
+                    Folder.builder().userId(userId).label("Recibidos").color("Blue").build(),
+                    Folder.builder().userId(userId).label("Enviar").color("Green").build(),
+                    Folder.builder().userId(userId).label("Importante").color("Red").build(),
+                    Folder.builder().userId(userId).label("Favoritos").color("Yellow").build()
             );
         }
 

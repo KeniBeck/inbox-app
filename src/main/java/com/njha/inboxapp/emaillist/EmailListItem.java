@@ -27,4 +27,5 @@ public class EmailListItem {
 
     @CassandraType(type = CassandraType.Name.BOOLEAN)
     private Boolean unread;
-}
+};
+

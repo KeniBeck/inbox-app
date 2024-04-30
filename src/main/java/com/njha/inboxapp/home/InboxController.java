@@ -56,7 +56,7 @@ public class InboxController {
 
         // get messages for default folder - Inbox
         if (Strings.isBlank(folder)) {
-            folder = "Inbox";
+            folder = "Recibidos";
         }
         model.addAttribute("folderName", folder);
         List<EmailListDto> folderEmails = emailListItemService.findAllMessagesByUserAndFolder(userId, folder);

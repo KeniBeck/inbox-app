@@ -50,11 +50,11 @@ public class EmailService {
     public void sendWelcomeEmails(String userId) {
         String sub = "New VolcanoMail Account Created!";
         String body = "Hello! Your new VolcanoMail account is created and is ready for use.";
-        sendEmailUtil(userId, "admin@volcanomail", "Inbox", sub, body);
+        sendEmailUtil(userId, "admin@volcanomail", "Recibidos", sub, body);
 
         sub = "Welcome To VolcanoMail!";
         body = "Hello! Welcome to VolcanoMail! Be hot as a Volcano and let the explosion of emails begin.";
-        sendEmailUtil(userId, "admin@volcanomail", "Inbox", sub, body);
+        sendEmailUtil(userId, "admin@volcanomail", "Recibidos", sub, body);
     }
 
     public Email findEmailById(UUID id) {
@@ -75,7 +75,7 @@ public class EmailService {
 
         // all recipients will receive the message in their inbox folder
         toIds.forEach(toId -> {
-            EmailListItemKey key = EmailListItemKey.builder().userId(toId).label("Inbox").timeUUID(createdAt).build();
+            EmailListItemKey key = EmailListItemKey.builder().userId(toId).label("Recibidos").timeUUID(createdAt).build();
             EmailListItem accountCreatedNotifEmailItemList = EmailListItem.builder()
                     .key(key)
                     .subject(subject)
@@ -83,11 +83,11 @@ public class EmailService {
                     .unread(true)
                     .build();
             emailListItemRepository.save(accountCreatedNotifEmailItemList);
-            unreadEmailStatsRepository.incrementUnreadCount(toId, "Inbox");
+            unreadEmailStatsRepository.incrementUnreadCount(toId, "Recibidos");
         });
 
         // sender user will have the message in their sent item
-        EmailListItemKey key = EmailListItemKey.builder().userId(fromId).label("Sent").timeUUID(createdAt).build();
+        EmailListItemKey key = EmailListItemKey.builder().userId(fromId).label("Enviar").timeUUID(createdAt).build();
         EmailListItem accountCreatedNotifEmailItemList = EmailListItem.builder()
                 .key(key)
                 .subject(subject)
